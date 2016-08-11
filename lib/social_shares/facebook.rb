@@ -9,7 +9,7 @@ module SocialShares
         }
       })
 
-      JSON.parse(response)['data'][0]['share_count'] || 0
+      JSON.parse(response)['data'][0]['share_count'] || 0 rescue 0
     end
   end
 end
