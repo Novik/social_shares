@@ -3,10 +3,10 @@ module SocialShares
     URL = 'http://graph.facebook.com/v2.8/'
 
     def shares!
-      response = get(URL, params: {
-        id: checked_url,
-        fields: 'share'
-      })
+#      response = get(URL, params: {
+#        id: checked_url,
+#        fields: 'share'
+#      })
 
       RestClient::Resource.new(URL, timeout: TIMEOUT, open_timeout: OPEN_TIMEOUT).get(params: {
         id: checked_url,
