@@ -1,17 +1,23 @@
 module SocialShares
   class Facebook < Base
     URL = 'http://graph.facebook.com/v2.8/'
+    @@access_token = nil
+
+    def self.set_access_token( app_id, app_secret )
+    {
+       @@access_token = "#{app_id}|#{app_secret}"
+    }
 
     def shares!
+      params = { id: checked_url, fields: 'share' }
+      params[:access_token] = @@access_token unless @@access_token.nil? 
+
 #      response = get(URL, params: {
 #        id: checked_url,
 #        fields: 'share'
 #      })
 
-      response = RestClient::Resource.new(URL, timeout: TIMEOUT, open_timeout: OPEN_TIMEOUT).get(params: {
-        id: checked_url,
-        fields: 'share'
-      }){ |resp, request, result, &block|
+      response = RestClient::Resource.new(URL, timeout: TIMEOUT, open_timeout: OPEN_TIMEOUT).get(params: params){ |resp, request, result, &block|
         case resp.code
           when 200
             resp
