@@ -8,15 +8,15 @@ module SocialShares
 #        fields: 'share'
 #      })
 
-      RestClient::Resource.new(URL, timeout: TIMEOUT, open_timeout: OPEN_TIMEOUT).get(params: {
+      response = RestClient::Resource.new(URL, timeout: TIMEOUT, open_timeout: OPEN_TIMEOUT).get(params: {
         id: checked_url,
         fields: 'share'
-      }){ |response, request, result, &block|
-        case response.code
+      }){ |resp, request, result, &block|
+        case resp.code
           when 200
-            response
+            resp
           else
-            puts response
+            puts resp
             raise
         end
       }
