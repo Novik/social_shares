@@ -1,6 +1,6 @@
 module SocialShares
   class Odnoklassniki < Base
-    URL = 'http://ok.ru/dk'
+    URL = 'https://ok.ru/dk'
 
     def shares!
       response = RestClient.get(URL, {

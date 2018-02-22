@@ -1,6 +1,6 @@
 module SocialShares
   class Vkontakte < Base
-    URL = 'http://vk.com/share.php'
+    URL = 'https://vk.com/share.php'
 
     def shares!
       response = get(URL, {
