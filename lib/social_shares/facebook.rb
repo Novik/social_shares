@@ -1,6 +1,6 @@
 module SocialShares
   class Facebook < Base
-    URL = 'https://graph.facebook.com/v2.8/'
+    URL = 'https://graph.facebook.com/v3.0/'
     @@access_token = nil
 
     def self.set_access_token( app_id, app_secret )
