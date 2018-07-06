@@ -8,7 +8,7 @@ module SocialShares
     end
 
     def shares!
-      params = { id: checked_url, fields: 'share' }
+      params = { id: checked_url, fields: 'engagement' }
       params[:access_token] = @@access_token unless @@access_token.nil? 
 
 #      response = get(URL, params: {
@@ -28,8 +28,8 @@ module SocialShares
 
       json_response = JSON.parse(response)
 
-      if json_response['share']
-        json_response['share']['share_count'] || 0
+      if json_response['engagement']
+        json_response['engagement']['share_count'] || 0
       else
         0
       end
