@@ -29,7 +29,7 @@ module SocialShares
       json_response = JSON.parse(response)
 
       if json_response['engagement']
-        json_response['engagement']['share_count'] || 0
+        (json_response['engagement']['share_count'] || 0).to_i + (json_response['engagement']['reaction_count'] || 0).to_i + (json_response['engagement']['comment_count'] || 0).to_i
       else
         0
       end
